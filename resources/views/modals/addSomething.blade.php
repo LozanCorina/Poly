@@ -30,6 +30,6 @@
 <div class="modal-footer">
     <button class="btn btn-danger" type="button" data-dismiss="modal" data-bs-original-title=""
             title="">close</button>
-    <button type="button" class="btn btn-primary store-something">Store Something</button>
+    <button type="submit" class="btn btn-primary store-something">Store Something</button>
 </div>
 </form>

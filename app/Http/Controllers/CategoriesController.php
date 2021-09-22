@@ -20,7 +20,7 @@ class CategoriesController extends Controller
     public function store(Request $request, Category $category)
     {
         $category->fill($request->all())->save();
-        return \response()->json(['status' => 'error', 'msg' => $category->name]);
+        return redirect()->route('main')->with(['status' => 'error', 'msg' => $category->name]);
     }
 
     public function edit($id)
@@ -33,12 +33,12 @@ class CategoriesController extends Controller
     {
         $category = Category::find($id);
         $category->fill($request->all())->save();
-        return \response()->json(['status' => 'error', 'msg' => $category->name.'updated']);
+        return redirect()->route('main')->with(['status' => 'error', 'msg' => $category->name.'updated']);
     }
 
     public function destroy($id)
     {
-        Category::find($id)->destroy();
-        return \response()->json(['status' => 'error', 'msg' =>'destroyed']);
+        Category::find($id)->delete();
+        return redirect()->route('main')->with(['status' => 'error', 'msg' =>'destroyed']);
     }
 }

@@ -16,7 +16,7 @@ class CreateSomethingsTable extends Migration
         Schema::create('somethings', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->integer('category_id')->nullable();
+            $table->foreignId('category_id')->constrained('categories')->nullable();
             $table->timestamps();
         });
     }

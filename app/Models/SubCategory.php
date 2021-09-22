@@ -12,5 +12,7 @@ class SubCategory extends Model
     protected $fillable=[
         'name'
     ];
-
+//  public function something(){
+//      return $this->belongsToMany('');
+//  }
 }

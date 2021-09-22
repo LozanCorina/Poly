@@ -19,7 +19,7 @@ class SubCategoriesController extends Controller
     public function store(Request $request, SubCategory $subCategory)
     {
         $subCategory->fill($request->all())->save();
-        return \response()->json(['status' => 'error', 'msg' => $subCategory->name]);
+        return redirect()->route('main')->with(['status' => 'error', 'msg' => $subCategory->name]);
     }
 
     public function edit($id)
@@ -32,12 +32,12 @@ class SubCategoriesController extends Controller
     {
         $subCategory = SubCategory::find($id);
         $subCategory->fill($request->all())->save();
-        return \response()->json(['status' => 'error', 'msg' => $subCategory->name.'updated']);
+        return redirect()->route('main')->with(['status' => 'error', 'msg' => $subCategory->name.'updated']);
     }
 
     public function destroy($id)
     {
-        SubCategory::find($id)->destroy();
-        return \response()->json(['status' => 'error', 'msg' =>'destroyed']);
+        SubCategory::find($id)->delete();
+        return redirect()->route('main')->with(['status' => 'error', 'msg' =>'destroyed']);
     }
 }

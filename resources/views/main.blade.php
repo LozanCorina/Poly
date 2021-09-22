@@ -48,9 +48,9 @@
                                 <tr>
                                     <th scope="row">{{++ $key}}</th>
                                     <td>{{$category->name}}</td>
-                                    <td>
+                                    <td style="display:inline block">
                                         <button type="button" data-url="{{route('category.edit', $category->id)}}" class="btn btn-success edit-category">Edit</button>
-                                        <button type="button" data-url="{{route('category.destroy', $category->id)}}" class="btn btn-danger destroy-category">Destroy</button>
+                                        <form method="POST" action="{{route('category.destroy', $category->id)}}">  @method('delete') @csrf<button type="submit" class="btn btn-danger destroy-category">Destroy</button></form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,9 +78,9 @@
                                 <tr>
                                     <th scope="row">{{++ $key}}</th>
                                     <td>{{$subCategory->name}}</td>
-                                    <td>
-                                        <button type="button" data-url="{{route('subCategory.edit', $subCategory->id)}}" class="btn btn-success edit-subCategory">Edit</button>
-                                        <button type="button" data-url="{{route('subCategory.destroy', $subCategory->id)}}" class="btn btn-danger destroy-subCategory">Destroy</button>
+                                    <td style="display:inline block">
+                                        <button type="submit" data-url="{{route('subCategory.edit', $subCategory->id)}}" class="btn btn-success edit-subCategory">Edit</button>
+                                        <form method="POST" action="{{route('subCategory.destroy', $subCategory->id)}}">@method('delete') @csrf<button type="submit" class="btn btn-danger destroy-subCategory">Destroy</button></form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -123,7 +123,7 @@
                                         </td>
                                         <td>
                                             <button type="button" data-url="{{route('something.edit', $something->id)}}" class="btn btn-success edit-something">Edit</button>
-                                            <button type="button" data-url="{{route('something.edit', $something->id)}}" class="btn btn-danger destroy-something">Destroy</button>
+                                            <form action="{{route('something.edit', $something->id)}}" method="POST"> @method('delete') @csrf<button type="submit"  class="btn btn-danger destroy-something">Destroy</button></form>
                                         </td>
                                     </tr>
                                 @endforeach

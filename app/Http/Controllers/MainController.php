@@ -26,7 +26,7 @@ class MainController extends Controller
     {
         $something->fill($request->all())->save();
         $something->subCategory()->attach($request->subcategory_id);
-        return \response()->json(['status' => 'error', 'msg' => $something->name]);
+        return rediret()->route('main')->with(['status' => 'error', 'msg' => $something->name]);
     }
 
     public function edit($id)
@@ -40,12 +40,12 @@ class MainController extends Controller
         $something = Something::find($id);
         $something->fill($request->all())->save();
         $something->subCategory()->attach($request->subcategory_id);
-        return \response()->json(['status' => 'error', 'msg' => $something->name.'updated']);
+        return rediret()->route('main')->with(['status' => 'error', 'msg' => $something->name.'updated']);
     }
 
     public function destroy($id)
     {
-        Something::find($id)->destroy();
-        return \response()->json(['status' => 'error', 'msg' =>'destroyed']);
+        Something::find($id)->delete();
+        return rediret()->route('main')->with(['status' => 'error', 'msg' =>'destroyed']);
     }
 }
